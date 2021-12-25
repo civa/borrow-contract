@@ -101,7 +101,7 @@ contract lending is Owned {
     borrowAmount = _amount.sub(loaningFee);
     inputAmount = _amount.mul(loaningRate);
     require(token(matata).transferFrom(msg.sender, address(this), inputAmount), "You need to have more MATATA to borrow the amount");
-    require(token(busd).transfer(msg.sender, borrowAmount), ""); 
+    require(token(busd).transfer(msg.sender, borrowAmount), "The contract does not have enough BUSD to fulfil loan"); 
 
     borrowedAmount[msg.sender] =(borrowedAmount[msg.sender]).add(_amount);
 
